@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {getUser} from "../Api/Users";
-// import ViewUser from "../Components/ViewUser";
+import ViewUser from "../Components/ViewUser";
 
 export default class UsersPage extends Component {
     state = {
@@ -24,7 +24,7 @@ export default class UsersPage extends Component {
         return <div>
             <h2>User</h2>
             
-            {/* <ViewUser user={this.state.user} /> */}
+            <ViewUser user={this.state.user} />
         </div>;
     }
     
