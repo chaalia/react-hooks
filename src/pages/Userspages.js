@@ -1,43 +1,36 @@
-import { Component } from "react/cjs/react.production.min";
-import { getUsers } from "../Api/Users";
-
+import React, { Component } from 'react';
+import {getUsers} from "../Api/Users";
+import {Link} from "react-router-dom";
 
 export default class UsersPage extends Component {
-
     state = {
-        users: [],
+        users: []
     }
 
-    componentDidMount = () =>{
+    componentDidMount =()=>{
         getUsers().then(response => {
             this.setState({
                 users: response.data
             });
-            console.console.log( this.setStat.users);
-
         })
         .catch(error=>{
-            alert('there is an error')
+            alert('حدث خطأ غير معروف');
         });
-    }
-    setActive =() =>{
-        console.log('hey');
     }
     
     render(){
-        return( <div> 
+        return <div>
             <h2>Users</h2>
+        
             <ul>
-                {this.state.users.map((user)=>{
+                {this.state.users.map(user=>
                     <li key={user.id}>
-                        {user.name}
-                        <button onClick={()=>this.setActive(user)}> View</button>
-                        <button onClick={()=>this.setActive(user)}> Delete</button>
+                        {user.name} {' '}
+                        <Link to={"/users/" + user.id}>View</Link>
                     </li>
-                })}
-            </ul>
-        </div>
-        )
+                )}
+            </ul>    
+        </div>;
     }
+    
 }
-

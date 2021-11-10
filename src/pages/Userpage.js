@@ -1,40 +1,31 @@
-import { Link } from "react-router-dom";
-import { Component } from "react/cjs/react.production.min";
-import { getUsers } from "../Api/Users";
+import React, { Component } from 'react';
+import {getUser} from "../Api/Users";
+// import ViewUser from "../Components/ViewUser";
 
-
-export default class UserPage extends Component {
-
+export default class UsersPage extends Component {
     state = {
-        user: {},
+        user: {}
     }
 
-    componentDidMount = () =>{
-        getUsers().then(response => {
-            this.setState({
-                users: response.data
-            });
-            console.console.log( this.setStat.users);
+    componentDidMount =()=>{
+        const userID = this.props.match.params.id;
 
+        getUser(userID).then(response => {
+            this.setState({
+                user: response.data
+            });
         })
         .catch(error=>{
-            alert('there is an error')
+            alert('حدث خطأ غير معروف');
         });
     }
     
     render(){
-        return( 
-        <div> 
-            <h2>Users</h2>
-            <ul>
-                {this.state.users.map((user)=>{
-                    <li key={user.id}>
-                        {user.name}
-                        <Link to={"/users/" + user.id}> View</Link>
-                    </li>
-                })}
-            </ul>
-        </div>
-        )
+        return <div>
+            <h2>User</h2>
+            
+            {/* <ViewUser user={this.state.user} /> */}
+        </div>;
     }
+    
 }

@@ -18,10 +18,10 @@ class App extends Component {
         <Link to="/about">About</Link>
         
         <Routes>
-          <Route path="/" exact >{HomePage} </Route>
-          <Route path="/about" component={AboutPage} />
-          <Route path="users" component={UsersPage} />
-          <Route path="users/:id" component={UserPage} />
+          <Route path="/" exact element={<HomePage/>} />
+          <Route path="/about" exact element={<AboutPage />} />
+          <Route path="users" exact element={<UsersPage />} />
+          <Route path="users/:id" exact element={<UserPage/>} />
 
         </Routes>
       </div>
