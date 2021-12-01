@@ -1,20 +1,17 @@
-import React from "react";
-import { ThemeContext, UserContext } from "./page";
 
-const User = () => {
+import React, { useContext } from 'react';
+import { UserContext, ThemeContext } from './page';
+
+function User() {
     
-    return(
-        <div>
-            <UserContext.Consumer>
-                {(user) => (
-                    <ThemeContext.Consumer>
-                        {(theme) => (
-                        <div>{user.name} | {theme.color}</div>)}
-                    </ThemeContext.Consumer> )}
-            </UserContext.Consumer>
+  const user = useContext(UserContext);
+  const theme = useContext(ThemeContext);
 
-        </div>
-    )
+  return (
+    <div>
+      {user.name} | {theme.name}
+    </div>
+  );
 }
 
 export default User;
