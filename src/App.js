@@ -1,6 +1,7 @@
 import './App.css';
-import { Component, useState} from 'react';
-import { LoginFormC, LoginFormF } from './LoginForm';
+import { useState} from 'react';
+// import { LoginFormC, LoginFormF } from './LoginForm';
+import User from './User';
 
 
 function App() {
@@ -13,8 +14,10 @@ function App() {
 
     {visible ?
     <>
-        <LoginFormC />
-        <LoginFormF /> </>
+        {/* <LoginFormC />
+        <LoginFormF />  */}
+        <User />
+    </>
       :
       null }
       <button onClick={() =>{ setVisible(! visible)} }>Toggle</button>
