@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Component } from "react";
 
 export class LoginFormC extends Component {
@@ -18,13 +18,25 @@ export class LoginFormC extends Component {
         });
     }
 
+    componentDidMount=() => {
+        console.log("class comp did mount");
+    }
+
+    componentDidUpdate=() => {
+        console.log("class comp did update");
+    }
+
+    componentWillUnmount=() => {
+        console.log("class comp will unmount");
+    }
+
     render(){
         return (
         <div>
             class example
 
             <input name={this.state.email} onChange={this.handleEmail} placeholder='email' />
-            <input name={this.state.email} onChange={this.handlePassword} placeholder='password' />
+            <input name={this.state.password} onChange={this.handlePassword} placeholder='password' />
 
         </div>
         )
@@ -33,8 +45,8 @@ export class LoginFormC extends Component {
 
 
 export function LoginFormF (){
-    const [email, setEmail, password, setPassword] = React.useState('')
-
+    const [email, setEmail ] = React.useState('')
+    const [password, setPassword] = React.useState('')
     function handleEmail(e){
         setEmail(e.target.value)
 
@@ -44,6 +56,19 @@ export function LoginFormF (){
         setPassword(e.target.value)
 
     }
+    useEffect(()=>{
+        console.log("function comp did effect");
+        return () => { 
+            console.log("FUNCTION comp will unmount");
+        };
+    }
+        , []
+    )
+
+    useEffect(()=>{
+        console.log("function component did update");}
+        , [email, password]
+    )
     return (
         <div>
                <h2> Function example </h2>

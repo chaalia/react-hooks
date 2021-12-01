@@ -1,17 +1,23 @@
 import './App.css';
-import { Component } from 'react/cjs/react.production.min';
+import { Component, useState} from 'react';
 import { LoginFormC, LoginFormF } from './LoginForm';
 
 
+function App() {
 
-class App extends Component {
+  const [visible, setVisible] = useState(true);
 
-  render() {
+ {
   return (
-      <div className="App">
-        <LoginFormC />
-        <LoginFormF />
+    <div >
 
+    {visible ?
+    <>
+        <LoginFormC />
+        <LoginFormF /> </>
+      :
+      null }
+      <button onClick={() =>{ setVisible(! visible)} }>Toggle</button>
       </div>
   );
 }
